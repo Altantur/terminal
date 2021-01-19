@@ -39,6 +39,8 @@ body {
 .terminal .screen {
   background-color: #1E1E1E;
   padding: 2px;
+  overflow-x: scroll;
+  height: 90%;
 }
 
 .command .time {

@@ -206,6 +206,9 @@ export default {
         case 'clear':
           this.tabs[this.active].commands = []
           break
+        case 'cat README.md':
+          this.tabs[this.active].commands = [...tab.commands, Object.assign({}, tab.info)]
+          break
         case 'cat ABOUT.md':
           this.tabs[this.active].commands = [...tab.commands, Object.assign({}, tab.info)]
           break
@@ -216,6 +219,7 @@ export default {
           this.tabs[this.active].commands = [...tab.commands, { input: tab.val, output: 'zsh: command not found: ' + tab.val, time: [now.getHours(), now.getMinutes(), now.getSeconds()].join(':') }]
       }
       this.tabs[this.active].val = ''
+      this.$nextTick(() => this.$refs.inp[this.active].scrollIntoView())
     }
   }
 }
