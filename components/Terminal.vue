@@ -158,7 +158,7 @@ export default {
           title: '~/Projects',
           info: {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
-            input: 'cat Ocurus/README.md',
+            input: 'cat README.md',
             output: `
             ### Hi there 👋
             `
@@ -178,7 +178,7 @@ export default {
             },
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
-              input: 'cat Ocurus/README.md',
+              input: 'cat README.md',
               output: `
               ### Hi there 👋
               `
