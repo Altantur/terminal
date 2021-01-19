@@ -112,7 +112,7 @@ export default {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'cat ABOUT.md',
             output: `
-            ### Hi there 👋
+            ### Hi there 👋<br>
             - 🔭 I’m currently working on: ocurus.com<br>
             - 🌱 I’m currently learning: dart.dev<br>
             - 👯 I’m looking to collaborate on: togloom.trade<br>
@@ -140,7 +140,7 @@ export default {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'cat ABOUT.md',
               output: `
-              ### Hi there 👋
+              ### Hi there 👋<br>
               - 🔭 I’m currently working on: ocurus.com<br>
               - 🌱 I’m currently learning: dart.dev<br>
               - 👯 I’m looking to collaborate on: togloom.trade<br>
