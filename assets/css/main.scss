@@ -1,0 +1,123 @@
+// Colors
+$bg-color: hsl(0,10%,10%);
+$dot-color: hsl(256,10%,50%);
+
+// Dimensions
+$dot-size: 1px;
+$dot-space: 22px;
+body {
+  background: linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center, linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center, $dot-color;
+  background-size: $dot-space $dot-space;
+}
+.dot-bg {
+  width: 100vw;
+  height: 100vh;
+}
+
+.terminal {
+  width: 90%;
+  height: 90%;
+  background-color: #1E1E1E;
+  border-radius: 10px;
+  border: 1px solid #404042;
+}
+
+.terminal .header {
+  background-color: #323435;
+  height: 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.terminal .tab-head {
+  background-color: #1E1E1E;
+  height: 30px;
+  color: #fff;
+  font-size: 13px;
+  box-shadow: 0 1px #161716;
+}
+
+.terminal .screen {
+  background-color: #1E1E1E;
+  padding: 2px;
+}
+
+.command .time {
+  color: #D6482D;
+  font-weight: bold;
+}
+
+.text-output .folders {
+  color: #7cc1d1;
+}
+
+.text-output {
+  color: #fff;
+  word-spacing: 30px;
+}
+
+.text-output .out {
+  word-spacing: 3px;
+}
+
+.location {
+  color: #42c432;
+  font-size: 14px;
+}
+
+.tab-head .tab {
+  height: 100%;
+}
+
+.tab-head .tab:hover {
+  background-color: #2A2C2D;
+}
+
+.tab-head .active {
+  background-color: #323435;
+}
+
+.header .buttons {
+  width: 60px;
+  height: 100%;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.buttons .close {
+  background-color: #FF5E56;
+  color: #FF5E56;
+}
+.buttons .min {
+  background-color: #FDBC2F;
+  color: #FDBC2F;
+}
+.buttons .max {
+  background-color: #2BC840;
+  color: #2BC840;
+}
+
+.buttons:hover .close {
+  color: #000;
+}
+.buttons:hover .min {
+  color: #000;
+}
+.buttons:hover .max {
+  color: #000;
+}
+
+.s-15 {
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.command-input {
+  background-color: transparent;
+  width: 80vw;
+}
+
+.command-input:focus {
+  outline: none;
+}
+
