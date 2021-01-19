@@ -98,7 +98,7 @@
 </template>
 
 <script>
-let today = new Date()
+const today = new Date()
 export default {
   data () {
     return {
@@ -197,21 +197,23 @@ export default {
       alert('It is for portfolio, not for use :)')
     },
     enter () {
-      today = new Date()
-      this.time = [today.getHours(), today.getMinutes(), today.getSeconds()].join(':')
+      const now = new Date()
       const tab = this.tabs[this.active]
+      this.time = [now.getHours(), now.getMinutes(), now.getSeconds()].join(':')
+      tab.info.time = this.time
+      tab.base_command.time = this.time
       switch (tab.val.trim()) {
         case 'clear':
           this.tabs[this.active].commands = []
           break
         case 'cat ABOUT.md':
-          this.tabs[this.active].commands = [...tab.commands, tab.info]
+          this.tabs[this.active].commands = [...tab.commands, Object.assign({}, tab.info)]
           break
         case 'ls':
-          this.tabs[this.active].commands = [...tab.commands, tab.base_command]
+          this.tabs[this.active].commands = [...tab.commands, Object.assign({}, tab.base_command)]
           break
         default:
-          this.tabs[this.active].commands = [...tab.commands, { input: tab.val, output: 'zsh: command not found: ' + tab.val, time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':') }]
+          this.tabs[this.active].commands = [...tab.commands, { input: tab.val, output: 'zsh: command not found: ' + tab.val, time: [now.getHours(), now.getMinutes(), now.getSeconds()].join(':') }]
       }
       this.tabs[this.active].val = ''
     }
