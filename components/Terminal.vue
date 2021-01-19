@@ -1,19 +1,19 @@
 <template>
   <div class="terminal" @click="focus">
     <div class="header flex items-center justify-between px-2">
-      <div class="buttons flex items-center justify-between select-none">
+      <div class="buttons flex items-center justify-between select-none" @click="action()">
         <div class="close s-15 flex items-center justify-center">
-          x
+          ✕
         </div>
         <div class="min s-15 flex items-center justify-center">
-          -
+          −
         </div>
         <div class="max s-15 flex items-center justify-center">
-          ◻︎
+          +
         </div>
       </div>
       <div class="text-white">
-        Terminal
+        altantur@internet
       </div>
       <div class="buttons" />
     </div>
@@ -192,6 +192,9 @@ export default {
   methods: {
     focus () {
       this.$refs.inp[this.active].focus()
+    },
+    action () {
+      alert('It is for portfolio, not for use :)')
     },
     enter () {
       today = new Date()
