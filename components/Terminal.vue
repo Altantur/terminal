@@ -153,6 +153,38 @@ export default {
             }
           ],
           val: ''
+        },
+        {
+          title: '~/Projects',
+          info: {
+            time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
+            input: 'cat Ocurus/README.md',
+            output: `
+            ### Hi there 👋
+            `
+          },
+          base_command: {
+            time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
+            input: 'ls',
+            folders: 'Ocurus         ISU              TogloomTrade            Nexi     TravelHubMongolia',
+            output: 'ABOUT.md'
+          },
+          commands: [
+            {
+              time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
+              input: 'ls',
+              folders: 'Ocurus         ISU              TogloomTrade            Nexi     TravelHubMongolia',
+              output: 'ABOUT.md'
+            },
+            {
+              time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
+              input: 'cat Ocurus/README.md',
+              output: `
+              ### Hi there 👋
+              `
+            }
+          ],
+          val: ''
         }
       ]
     }
