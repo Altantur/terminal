@@ -2,7 +2,7 @@
   <div v-show="!minimized" class="terminal" :class="fullscreen ? 'fullscreen' : ''" @click="focus">
     <div class="header flex items-center justify-between px-2">
       <div class="buttons flex items-center justify-between select-none">
-        <div class="close s-15 flex items-center justify-center">
+        <div class="close s-15 flex items-center justify-center" @click="close()">
           ✕
         </div>
         <div class="min s-15 flex items-center justify-center" @click="setMinimize(true)">
@@ -162,14 +162,20 @@ export default {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'cat README.md',
             output: `
-            ### Hi there 👋
-            `
+            ### My projects made with : <br>
+            - 🛠 Laravel, PHP<br>
+            - 😍 NuxtJS(VueJS), JavaScript<br>
+            - 🛒 Deployment(S3, Lambda, EC2), AWS<br>
+            - 🚊 Express, NodeJS<br>
+            - 💨 Tailwind, CSS<br>
+            - 🔥 Firebase, GCP<br>
+             `
           },
           base_command: {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'ls',
             folders: 'Ocurus         ISU              TogloomTrade            Nexi     TravelHubMongolia',
-            output: 'ABOUT.md'
+            output: 'README.md'
           },
           commands: [
             {
@@ -182,7 +188,13 @@ export default {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'cat README.md',
               output: `
-              ### Hi there 👋
+                ### My projects made with : <br>
+                  - 🛠 Laravel, PHP<br>
+                  - 😍 NuxtJS(VueJS), JavaScript<br>
+                  - 🛒 Deployment(S3, Lambda, EC2), AWS<br>
+                  - 🚊 Express, NodeJS<br>
+                  - 💨 Tailwind, CSS<br>
+                  - 🔥 Firebase, GCP<br>
               `
             }
           ],
@@ -198,6 +210,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'setActive',
       'setMinimize'
     ]),
     focus () {
@@ -205,6 +218,10 @@ export default {
     },
     action () {
       alert('It is for portfolio, not for use :)')
+    },
+    close () {
+      this.setMinimize(true)
+      this.setActive(false)
     },
     enter () {
       const now = new Date()
