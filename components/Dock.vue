@@ -7,25 +7,32 @@
       target="_blank"
       class="app cursor-pointer"
       :style="{ backgroundImage: 'url(' + social.icon + ')' }"
+      @click="social.active = true"
     >
       <span class="tooltiptext">
         {{ social.text }}
       </span>
+      <div v-show="social.active" class="flex justify-center" :class="social.active ? 'active' : ''">
+        .
+      </div>
     </a>
     <div
       class="app cursor-pointer"
       :style="{ backgroundImage: 'url(/terminal.png)' }"
-      @click="setMinimize(false)"
+      @click="open()"
     >
-      <span class="tooltiptext">
+      <span v-show="active" class="tooltiptext">
         Terminal
       </span>
+      <div class="flex justify-center" :class="active ? 'active' : ''">
+        .
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data () {
     return {
@@ -33,30 +40,44 @@ export default {
         {
           text: 'Show Github Profile',
           link: 'https://github.com/altantur',
+          active: false,
           icon: '/github.png'
         },
         {
           text: 'Connect on LinkedIn',
           link: 'https://www.linkedin.com/in/altantur/',
+          active: false,
           icon: '/linkedin.png'
         },
         {
           text: 'Follow on Twitter',
           link: 'https://twitter.com/Altantur',
+          active: false,
           icon: '/twitter.png'
         },
         {
           text: 'Email me',
           link: 'mailto: turuu.br@gmail.com',
+          active: false,
           icon: '/mail.png'
         }
       ]
     }
   },
+  computed: {
+    ...mapGetters({
+      active: 'active'
+    })
+  },
   methods: {
     ...mapActions([
+      'setActive',
       'setMinimize'
-    ])
+    ]),
+    open () {
+      this.setMinimize(false)
+      this.setActive(true)
+    }
   }
 }
 </script>
