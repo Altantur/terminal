@@ -39,8 +39,15 @@ body {
 .terminal .screen {
   background-color: #1E1E1E;
   padding: 2px;
-  overflow-x: scroll;
-  height: 90%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(100% - 60px);
+  -ms-overflow-style: none;  
+  scrollbar-width: none;
+}
+
+.terminal .screen::-webkit-scrollbar {
+  display: none;
 }
 
 .command .time {
