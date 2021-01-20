@@ -1,3 +1,4 @@
 export default () => ({
-  minimized: false
+  minimized: false,
+  active: true
 })
