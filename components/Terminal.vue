@@ -1,14 +1,14 @@
 <template>
-  <div class="terminal" @click="focus">
+  <div v-show="!minimized" class="terminal" :class="fullscreen ? 'fullscreen' : ''" @click="focus">
     <div class="header flex items-center justify-between px-2">
-      <div class="buttons flex items-center justify-between select-none" @click="action()">
+      <div class="buttons flex items-center justify-between select-none">
         <div class="close s-15 flex items-center justify-center">
           ✕
         </div>
-        <div class="min s-15 flex items-center justify-center">
+        <div class="min s-15 flex items-center justify-center" @click="minimized = !minimized">
           −
         </div>
-        <div class="max s-15 flex items-center justify-center">
+        <div class="max s-15 flex items-center justify-center" @click="fullscreen = !fullscreen">
           +
         </div>
       </div>
@@ -103,6 +103,8 @@ export default {
   data () {
     return {
       active: 0,
+      fullscreen: false,
+      minimized: false,
       time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
       val: '',
       tabs: [
