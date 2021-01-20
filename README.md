@@ -1,4 +1,4 @@
-# jab
+#  Portfolio mimicking MacOS terminal with minimal Dock.
 
 ## Build Setup
 
@@ -18,3 +18,9 @@ $ yarn generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
+## Demo
+
+Prodly deployed with Netlify at [altantur.netlify.app](https://altantur.netlify.app/).
+
+
