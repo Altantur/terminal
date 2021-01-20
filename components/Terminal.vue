@@ -5,7 +5,7 @@
         <div class="close s-15 flex items-center justify-center">
           ✕
         </div>
-        <div class="min s-15 flex items-center justify-center" @click="minimized = !minimized">
+        <div class="min s-15 flex items-center justify-center" @click="setMinimize(true)">
           −
         </div>
         <div class="max s-15 flex items-center justify-center" @click="fullscreen = !fullscreen">
@@ -98,13 +98,13 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 const today = new Date()
 export default {
   data () {
     return {
       active: 0,
       fullscreen: false,
-      minimized: false,
       time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
       val: '',
       tabs: [
@@ -191,7 +191,15 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapGetters({
+      minimized: 'minimized'
+    })
+  },
   methods: {
+    ...mapActions([
+      'setMinimize'
+    ]),
     focus () {
       this.$refs.inp[this.active].focus()
     },

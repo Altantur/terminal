@@ -15,6 +15,7 @@
     <div
       class="app cursor-pointer"
       :style="{ backgroundImage: 'url(/terminal.png)' }"
+      @click="setMinimize(false)"
     >
       <span class="tooltiptext">
         Terminal
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data () {
     return {
@@ -52,6 +54,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions([
+      'setMinimize'
+    ])
   }
 }
 </script>
