@@ -16,9 +16,22 @@
         .
       </div>
     </a>
-    <div
+    <nuxt-link
+      class="app cursor-pointer"
+      :style="{ backgroundImage: 'url(/notes.png)' }"
+      to="/notes"
+    >
+      <span v-show="active" class="tooltiptext">
+        Notes
+      </span>
+      <div v-if="$nuxt.$route.name === 'notes'" class="flex justify-center" :class="active ? 'active' : ''">
+        .
+      </div>
+    </nuxt-link>
+    <nuxt-link
       class="app cursor-pointer"
       :style="{ backgroundImage: 'url(/terminal.png)' }"
+      to="/"
       @click="open()"
     >
       <span v-show="active" class="tooltiptext">
@@ -27,7 +40,7 @@
       <div class="flex justify-center" :class="active ? 'active' : ''">
         .
       </div>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 

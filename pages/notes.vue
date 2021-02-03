@@ -1,5 +1,5 @@
 <template>
-  <Terminal />
+  <Notes />
 </template>
 
 <script>
