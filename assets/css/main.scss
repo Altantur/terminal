@@ -276,3 +276,31 @@ body {
 .titles .active {
   background-color: #9b833a;
 }
+
+.me {
+  background-image: url('/me.png');
+  background-size: contain;
+  width: 200px;
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.updated-at {
+  color: #5c5c5c;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  font-size: 12px;
+}
+
+article {
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: calc(100% - 60px);
+  -ms-overflow-style: none;  
+  scrollbar-width: none;
+}

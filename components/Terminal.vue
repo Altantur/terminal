@@ -114,15 +114,19 @@ export default {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'cat ABOUT.md',
             output: `
-            ### Hi there 👋<br>
-            - 🔭 I’m currently working on: ocurus.com<br>
-            - 🌱 I’m currently learning: dart.dev<br>
-            - 👯 I’m looking to collaborate on: togloom.trade<br>
-            - 🤔 I’m looking for help with: golang.org<br>
-            - 💬 Ask me about: dev-tools<br>
-            - 📫 How to reach me: altanturbo.com<br>
-            - 😄 Pronouns: he/him<br>
-            - ⚡ Fun fact: no fun go back to work XD<br>
+                <div class="flex flex-wrap">
+                  <div class='me'>
+                  </div>
+                  <div class="flex flex-col justify-between">
+                    <p>Hi there 👋</p>
+                    <p>🔭 I’m currently working on: <a href="https://togloom.trade/" target="_blank">togloom.trade.</a></p>
+                    <p>💬 Ask me about:  Web Development, Geography.</p>
+                    <p>🚀 Open for Job: Tell me your story.</p>
+                    <p>🎹 Programming Language: PHP, JavaScript.</p>
+                    <p>🖥 Tech Stack: Laravel, NuxtJS, Serverless.</p>
+                    <p>😄 Pronouns: He/Him.</p>
+                  </div>
+                </div>
             `
           },
           base_command: {
@@ -134,24 +138,28 @@ export default {
           commands: [
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
-              input: 'ls',
-              folders: 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public ',
-              output: 'ABOUT.md'
+              input: 'cat ABOUT.md',
+              output: `
+                <div class="flex flex-wrap">
+                  <div class='me'>
+                  </div>
+                  <div class="flex flex-col justify-between">
+                    <p>Hi there 👋</p>
+                    <p>🔭 I’m currently working on: <a href="https://togloom.trade/" target="_blank">togloom.trade.</a></p>
+                    <p>💬 Ask me about:  Web Development, Geography.</p>
+                    <p>🚀 Open for Job: Tell me your story.</p>
+                    <p>🎹 Programming Language: PHP, JavaScript.</p>
+                    <p>🖥 Tech Stack: Laravel, NuxtJS, Serverless.</p>
+                    <p>😄 Pronouns: He/Him.</p>
+                  </div>
+                </div>
+              `
             },
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
-              input: 'cat ABOUT.md',
-              output: `
-              ### Hi there 👋<br>
-              - 🔭 I’m currently working on: ocurus.com<br>
-              - 🌱 I’m currently learning: dart.dev<br>
-              - 👯 I’m looking to collaborate on: togloom.trade<br>
-              - 🤔 I’m looking for help with: golang.org<br>
-              - 💬 Ask me about: dev-tools<br>
-              - 📫 How to reach me: altanturbo.com<br>
-              - 😄 Pronouns: he/him<br>
-              - ⚡ Fun fact: no fun go back to work XD<br>
-              `
+              input: 'ls',
+              folders: 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public ',
+              output: 'ABOUT.md'
             }
           ],
           val: ''

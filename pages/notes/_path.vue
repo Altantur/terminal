@@ -15,21 +15,37 @@
         </div>
       </div>
       <div class="titles">
-        <div v-for="note in notes" :key="note.path" class="title active">
-          <div class="text">
-            {{ note.title }}
+        <nuxt-link
+          v-for="note in notes"
+          :key="note.path"
+          :to="'/notes/' + note.slug "
+        >
+          <div
+            class="title"
+            :class="{ active: isActive(note.slug) }"
+          >
+            <div class="text">
+              {{ note.title }}
+            </div>
+            <div class="date">
+              {{ dateStr(note.updatedAt) }} - {{ note.description }}
+            </div>
           </div>
-          <div class="date">
-            {{ dateStr(note.updatedAt) }} - {{ note.description }}
-          </div>
-        </div>
+        </nuxt-link>
       </div>
     </div>
-    <div class="note">
+    <div v-if="!!selected" class="note">
       <div class="header bb-lr-10" />
-      <article v-for="page in notes" :key="page.id">
-        <h1>{{ page.title }}</h1>
-        <nuxt-content :document="page" />
+      <div class="updated-at">
+        {{ toHumanRead(selected.updatedAt) }}
+      </div>
+      <article>
+        <h1
+          class="flex justify-center"
+        >
+          {{ selected.title }}
+        </h1>
+        <nuxt-content :document="selected" />
       </article>
     </div>
   </div>
@@ -37,11 +53,16 @@
 
 <script>
 export default {
+  asyncData ({ params }) {
+    const slug = params.path
+    return { slug }
+  },
   data () {
     return {
       fullscreen: false,
       title: 'Altantur Notes',
-      notes: []
+      notes: [],
+      selected: null
     }
   },
   head () {
@@ -62,13 +83,28 @@ export default {
   },
   async created () {
     this.notes = await this.$content('notes')
+      .only(['title', 'updatedAt', 'description', 'slug'])
       .sortBy('date')
       .fetch()
+    if (this.slug) {
+      this.selected = await this.$content('notes/' + this.slug)
+        .fetch()
+    }
   },
   methods: {
     dateStr (str) {
       const dt = new Date(str)
       return dt.toLocaleDateString()
+    },
+    toHumanRead (str) {
+      const date = new Date(str)
+      return date.toLocaleString()
+    },
+    isActive (slug) {
+      if (this.selected) {
+        return this.selected.slug === slug
+      }
+      return false
     },
     close () {
     }

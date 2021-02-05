@@ -1,17 +1,7 @@
 ---
-title: Hello World of Content Nuxt Library!
-description: First time using nuxt content library.
+title: To begin write
+description: Writing is like a wound that hurts so much after occurred. But enough time passed by it can become a scar of pride or shame. The rewarding part is it will give you thoughts of old you.
 ---
 
-## Links
-
-<nuxt-link to="/">to My Portfolio</nuxt-link>
-
-<a href="/articles">Html Link to Blog</a>
-
-[Markdown Link to Blog](/articles)
-
-<a href="https://nuxtjs.org">External link html</a>
-
-[External Link markdown](https://nuxtjs.org)
+Writing is like a wound that hurts so much after occurred. But enough time passed by it can become a scar of pride or shame. The rewarding part is it will give you thoughts of old you.
 
