@@ -14,9 +14,9 @@ export default {
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@altantur' },
       { name: 'twitter:creator', content: '@altantur' },
-      { name: 'twitter:title', content: 'Take a look at my Terminal, mimicking.' },
-      { name: 'twitter:description', content: 'I am Altantur, Building software is fun until you paid for it :)' },
-      { name: 'twitter:image', content: 'https://altantur.netlify.app/ss.png' },
+      { name: 'twitter:title', content: 'Welcome to MySpace, I mean my Portfolio.' },
+      { name: 'twitter:description', content: 'No magic can be done alone.' },
+      { name: 'twitter:image', content: 'https://altantur.me/ss.png' },
       { hid: 'description', name: 'description', content: 'I am Altantur, here to help you.' }
     ],
     link: [
