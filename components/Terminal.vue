@@ -88,6 +88,7 @@
                 class="command-input"
                 autofocus
                 @keyup.enter="enter"
+                @keydown.tab.prevent="tabComplete"
               >
             </div>
           </div>
@@ -133,7 +134,7 @@ export default {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'ls',
             folders: 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public ',
-            output: 'ABOUT.md'
+            output: 'ABOUT.md       Altantur_CV.pdf'
           },
           commands: [
             {
@@ -159,7 +160,7 @@ export default {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'ls',
               folders: 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public ',
-              output: 'ABOUT.md'
+              output: 'ABOUT.md        Altantur_CV.pdf'
             }
           ],
           val: ''
@@ -190,7 +191,7 @@ export default {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'ls',
               folders: 'Ocurus         ISU              TogloomTrade            Nexi     TravelHubMongolia',
-              output: 'ABOUT.md'
+              output: 'ABOUT.md   Altantur_CV.pdf'
             },
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
@@ -208,7 +209,8 @@ export default {
           ],
           val: ''
         }
-      ]
+      ],
+      trie: {}
     }
   },
   computed: {
@@ -230,6 +232,10 @@ export default {
     close () {
       this.setMinimize(true)
       this.setActive(false)
+    },
+    tabComplete () {
+      const tab = this.tabs[this.active]
+      alert(tab.val)
     },
     enter () {
       const now = new Date()
