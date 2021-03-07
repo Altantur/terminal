@@ -32,7 +32,7 @@
       class="app cursor-pointer"
       :style="{ backgroundImage: 'url(/terminal.png)' }"
       to="/"
-      @click="open()"
+      @click.native="open()"
     >
       <span v-show="active" class="tooltiptext">
         Terminal

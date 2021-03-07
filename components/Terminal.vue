@@ -210,12 +210,23 @@ export default {
           val: ''
         }
       ],
+      inputs: [
+        'clear',
+        'cat README.md',
+        'cat ABOUT.md',
+        'ls',
+        'open Altantur_CV.pdf'
+      ],
       trie: {}
     }
   },
   computed: {
     ...mapGetters({
       minimized: 'minimized'
+    })
+  },
+  created () {
+    this.inputs.forEach((el) => {
     })
   },
   methods: {
@@ -255,6 +266,9 @@ export default {
           break
         case 'ls':
           this.tabs[this.active].commands = [...tab.commands, Object.assign({}, tab.base_command)]
+          break
+        case 'open Altantur_CV.pdf':
+          window.location.href = '/Altantur_CV.pdf'
           break
         default:
           this.tabs[this.active].commands = [...tab.commands, { input: tab.val, output: 'zsh: command not found: ' + tab.val, time: [now.getHours(), now.getMinutes(), now.getSeconds()].join(':') }]
