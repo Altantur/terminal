@@ -19,12 +19,12 @@
     <nuxt-link
       class="app cursor-pointer"
       :style="{ backgroundImage: 'url(/notes.png)' }"
-      to="/notes"
+      :to="latest_note"
     >
       <span v-show="active" class="tooltiptext">
         Notes
       </span>
-      <div v-if="$nuxt.$route.name === 'notes'" class="flex justify-center" :class="active ? 'active' : ''">
+      <div v-if="$nuxt.$route.name === 'notes-path'" class="flex justify-center" :class="active ? 'active' : ''">
         .
       </div>
     </nuxt-link>
@@ -37,7 +37,7 @@
       <span v-show="active" class="tooltiptext">
         Terminal
       </span>
-      <div class="flex justify-center" :class="active ? 'active' : ''">
+      <div v-if="$nuxt.$route.name === 'index'" class="flex justify-center" :class="active ? 'active' : ''">
         .
       </div>
     </nuxt-link>
@@ -74,13 +74,24 @@ export default {
           active: false,
           icon: '/mail.png'
         }
-      ]
+      ],
+      latest_note: '/notes'
     }
   },
   computed: {
     ...mapGetters({
       active: 'active'
     })
+  },
+  async created () {
+    const notes = await this.$content('notes')
+      .only(['slug'])
+      .sortBy('updatedAt', 'desc')
+      .limit(1)
+      .fetch()
+    if (notes.length) {
+      this.latest_note = notes[0].path
+    }
   },
   methods: {
     ...mapActions([

@@ -84,7 +84,7 @@ export default {
   async created () {
     this.notes = await this.$content('notes')
       .only(['title', 'updatedAt', 'description', 'slug'])
-      .sortBy('updatedAt')
+      .sortBy('updatedAt', 'desc')
       .fetch()
     if (this.slug) {
       this.selected = await this.$content('notes/' + this.slug)

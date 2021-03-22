@@ -20,7 +20,7 @@
             {{ note.title }}
           </div>
           <div class="date">
-            {{ dateStr(note.updatedAt) }} - {{ note.description }}
+            {{ dateStr(note.createdAt) }} - {{ note.description }}
           </div>
         </div>
       </div>
