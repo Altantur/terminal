@@ -120,10 +120,10 @@ export default {
                   </div>
                   <div class="flex flex-col justify-between">
                     <p>Hi there 👋</p>
-                    <p>🔭 I’m currently working on: <a href="https://togloom.trade/" target="_blank">togloom.trade.</a></p>
-                    <p>💬 Ask me about:  Web Development, Geography.</p>
-                    <p>🚀 Open for Job: Tell me your story.</p>
-                    <p>🎹 Programming Language: PHP, JavaScript.</p>
+                    <p>🔭 I’m currently working on: <a href="https://alightcreative.com/" target="_blank">Alight Creative Inc</a></p>
+                    <p>💬 Ask me about: Web Development, Geography.</p>
+                    <p>🚀 Open for Job: NO, but tell me your story.</p>
+                    <p>🎹 Programming Language: PHP, JavaScript/TypeScript.</p>
                     <p>🖥 Tech Stack: Laravel, NuxtJS, Serverless.</p>
                     <p>😄 Pronouns: He/Him.</p>
                   </div>
@@ -146,10 +146,10 @@ export default {
                   </div>
                   <div class="flex flex-col justify-between">
                     <p>Hi there 👋</p>
-                    <p>🔭 I’m currently working on: <a href="https://togloom.trade/" target="_blank">togloom.trade.</a></p>
-                    <p>💬 Ask me about:  Web Development, Geography.</p>
-                    <p>🚀 Open for Job: Tell me your story.</p>
-                    <p>🎹 Programming Language: PHP, JavaScript.</p>
+                    <p>🔭 I’m currently working on: <a href="https://alightcreative.com/" target="_blank">Alight Creative Inc</a></p>
+                    <p>💬 Ask me about: Web Development, Geography.</p>
+                    <p>🚀 Open for Job: NO, but tell me your story.</p>
+                    <p>🎹 Programming Language: PHP, JavaScript/TypeScript.</p>
                     <p>🖥 Tech Stack: Laravel, NuxtJS, Serverless.</p>
                     <p>😄 Pronouns: He/Him.</p>
                   </div>
