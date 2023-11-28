@@ -122,9 +122,9 @@ export default {
                     <p>Hi there 👋</p>
                     <p>🔭 I’m currently working on: <a href="https://alightcreative.com/" target="_blank">Alight Creative Inc</a></p>
                     <p>💬 Ask me about: Web Development, Geography.</p>
-                    <p>🚀 Open for Job: NO, but tell me your story.</p>
-                    <p>🎹 Programming Language: PHP, JavaScript/TypeScript.</p>
-                    <p>🖥 Tech Stack: Laravel, NuxtJS, Serverless.</p>
+                    <p>🚀 Open for Job: Yes! Please tell me your story.</p>
+                    <p>🎹 Programming Language: NodeJS/TypeScript.</p>
+                    <p>🖥 Tech Stack: NuxtJS, Serverless.</p>
                     <p>😄 Pronouns: He/Him.</p>
                   </div>
                 </div>
@@ -148,9 +148,9 @@ export default {
                     <p>Hi there 👋</p>
                     <p>🔭 I’m currently working on: <a href="https://alightcreative.com/" target="_blank">Alight Creative Inc</a></p>
                     <p>💬 Ask me about: Web Development, Geography.</p>
-                    <p>🚀 Open for Job: NO, but tell me your story.</p>
-                    <p>🎹 Programming Language: PHP, JavaScript/TypeScript.</p>
-                    <p>🖥 Tech Stack: Laravel, NuxtJS, Serverless.</p>
+                    <p>🚀 Open for Job: Yes! Please tell me your story.</p>
+                    <p>🎹 Programming Language: NodeJS/TypeScript.</p>
+                    <p>🖥 Tech Stack: NuxtJS, Serverless.</p>
                     <p>😄 Pronouns: He/Him.</p>
                   </div>
                 </div>
@@ -173,11 +173,12 @@ export default {
             output: `
             ### My projects made with : <br>
             - 🛠 Laravel, PHP<br>
-            - 😍 NuxtJS(VueJS), JavaScript<br>
-            - 🛒 Deployment(S3, Lambda, EC2), AWS<br>
-            - 🚊 Express, NodeJS<br>
+            - 😍 NuxtJS(VueJS), Typescript<br>
+            - 🛒 Deployment(CircleCI)<br>
+            - 🚊 NestJS, NodeJS<br>
             - 💨 Tailwind, CSS<br>
             - 🔥 Firebase, GCP<br>
+            - 🩵 Finally, a love<br>
              `
           },
           base_command: {
@@ -190,7 +191,7 @@ export default {
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'ls',
-              folders: 'Ocurus         ISU              TogloomTrade            Nexi     TravelHubMongolia',
+              folders: 'Vtoura                Alight-Motion            Nexi     TravelHubMongolia',
               output: 'ABOUT.md   Altantur_CV.pdf'
             },
             {
@@ -199,11 +200,12 @@ export default {
               output: `
                 ### My projects made with : <br>
                   - 🛠 Laravel, PHP<br>
-                  - 😍 NuxtJS(VueJS), JavaScript<br>
-                  - 🛒 Deployment(S3, Lambda, EC2), AWS<br>
-                  - 🚊 Express, NodeJS<br>
+                  - 😍 NuxtJS(VueJS), Typescript<br>
+                  - 🛒 Deployment(CircleCI)<br>
+                  - 🚊 NestJS, NodeJS<br>
                   - 💨 Tailwind, CSS<br>
                   - 🔥 Firebase, GCP<br>
+                  - 🩵 Finally, a love<br>
               `
             }
           ],
