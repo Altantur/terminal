@@ -286,6 +286,28 @@ body {
   background-position: center;
 }
 
+.profile-picture-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.blurry {
+  -webkit-filter: blur(8px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
+  filter: blur(8px);
+}
+
+.reveal-text {
+  position: absolute;
+  top: 80px;
+  width: 200px;
+  text-align: center;
+  font-size: 11px;
+  word-spacing: 3px;
+}
+
 .updated-at {
   color: #5c5c5c;
   width: 100%;
