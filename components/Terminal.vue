@@ -61,7 +61,10 @@
               <span class="folders">
                 {{ command.folders }}
               </span>
-              <span class="out" v-html="command.output" />
+              <!-- eslint-disable vue/no-v-html -->
+              <About v-if="command.input === 'cat ABOUT.md'" />
+              <span v-else class="out" v-html="command.output" />
+              <!--eslint-enable-->
             </div>
           </div>
         </div>
@@ -88,6 +91,8 @@
                 class="command-input"
                 autofocus
                 @keyup.enter="enter"
+                @keyup.down="history(1)"
+                @keyup.up="history(-1)"
                 @keydown.tab.prevent="tabComplete"
               >
             </div>
@@ -101,6 +106,8 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 const today = new Date()
+const output = ''
+const folders = 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public '
 export default {
   data () {
     return {
@@ -108,59 +115,37 @@ export default {
       fullscreen: false,
       time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
       val: '',
+      valBackup: '',
+      commandHistory: [
+        'cat ABOUT.md',
+        'ls'
+      ],
+      currCursor: -1,
       tabs: [
         {
           title: '~',
           info: {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'cat ABOUT.md',
-            output: `
-                <div class="flex flex-wrap">
-                  <div class='me'>
-                  </div>
-                  <div class="flex flex-col justify-between">
-                    <p>Hi there 👋</p>
-                    <p>🔭 I’m currently working on: <a href="https://alightcreative.com/" target="_blank">Alight Creative Inc</a></p>
-                    <p>💬 Ask me about: Web Development, Geography.</p>
-                    <p>🚀 Open for Job: Yes! Please tell me your story.</p>
-                    <p>🎹 Programming Language: NodeJS/TypeScript.</p>
-                    <p>🖥 Tech Stack: NuxtJS, Serverless.</p>
-                    <p>😄 Pronouns: He/Him.</p>
-                  </div>
-                </div>
-            `
+            output
           },
           base_command: {
             time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
             input: 'ls',
-            folders: 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public ',
-            output: 'ABOUT.md       Altantur_CV.pdf'
+            folders,
+            output: 'ABOUT.md       Altantur_Resume.pdf'
           },
           commands: [
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'cat ABOUT.md',
-              output: `
-                <div class="flex flex-wrap">
-                  <div class='me'>
-                  </div>
-                  <div class="flex flex-col justify-between">
-                    <p>Hi there 👋</p>
-                    <p>🔭 I’m currently working on: <a href="https://alightcreative.com/" target="_blank">Alight Creative Inc</a></p>
-                    <p>💬 Ask me about: Web Development, Geography.</p>
-                    <p>🚀 Open for Job: Yes! Please tell me your story.</p>
-                    <p>🎹 Programming Language: NodeJS/TypeScript.</p>
-                    <p>🖥 Tech Stack: NuxtJS, Serverless.</p>
-                    <p>😄 Pronouns: He/Him.</p>
-                  </div>
-                </div>
-              `
+              output
             },
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'ls',
-              folders: 'Applications         Desktop              Downloads            Movies               Pictures             Projects     Library              Music                 Public ',
-              output: 'ABOUT.md        Altantur_CV.pdf'
+              folders,
+              output: 'ABOUT.md        Altantur_Resume.pdf'
             }
           ],
           val: ''
@@ -174,7 +159,7 @@ export default {
             ### My projects made with : <br>
             - 🛠 Laravel, PHP<br>
             - 😍 NuxtJS(VueJS), Typescript<br>
-            - 🛒 Deployment(CircleCI)<br>
+            - 🛒 CI/CD<br>
             - 🚊 NestJS, NodeJS<br>
             - 💨 Tailwind, CSS<br>
             - 🔥 Firebase, GCP<br>
@@ -192,7 +177,7 @@ export default {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
               input: 'ls',
               folders: 'Vtoura                Alight-Motion            Nexi     TravelHubMongolia',
-              output: 'ABOUT.md   Altantur_CV.pdf'
+              output: 'ABOUT.md   Altantur_Resume.pdf'
             },
             {
               time: [today.getHours(), today.getMinutes(), today.getSeconds()].join(':'),
@@ -201,7 +186,7 @@ export default {
                 ### My projects made with : <br>
                   - 🛠 Laravel, PHP<br>
                   - 😍 NuxtJS(VueJS), Typescript<br>
-                  - 🛒 Deployment(CircleCI)<br>
+                  - 🛒 CI/CD<br>
                   - 🚊 NestJS, NodeJS<br>
                   - 💨 Tailwind, CSS<br>
                   - 🔥 Firebase, GCP<br>
@@ -217,7 +202,7 @@ export default {
         'cat README.md',
         'cat ABOUT.md',
         'ls',
-        'open Altantur_CV.pdf'
+        'open Altantur_Resume.pdf'
       ],
       trie: {}
     }
@@ -250,12 +235,35 @@ export default {
       const tab = this.tabs[this.active]
       alert(tab.val)
     },
+    history (change) {
+      let cursor = this.currCursor + change
+      if (this.currCursor === -1) {
+        this.valBackup = this.tabs[this.active].val
+        cursor = this.commandHistory.length - 1
+      }
+      if (cursor < 0) {
+        cursor = 0
+      }
+      if (cursor === this.commandHistory.length) {
+        cursor = -1
+      }
+      this.currCursor = cursor
+      if (cursor === -1) {
+        this.tabs[this.active].val = this.valBackup
+        this.valBackup = ''
+      } else {
+        this.tabs[this.active].val = this.commandHistory[cursor]
+      }
+    },
     enter () {
       const now = new Date()
       const tab = this.tabs[this.active]
       this.time = [now.getHours(), now.getMinutes(), now.getSeconds()].join(':')
       tab.info.time = this.time
       tab.base_command.time = this.time
+      if (tab.val.trim()) {
+        this.commandHistory = [...this.commandHistory, tab.val]
+      }
       switch (tab.val.trim()) {
         case 'clear':
           this.tabs[this.active].commands = []
@@ -269,8 +277,8 @@ export default {
         case 'ls':
           this.tabs[this.active].commands = [...tab.commands, Object.assign({}, tab.base_command)]
           break
-        case 'open Altantur_CV.pdf':
-          window.location.href = '/Altantur_CV.pdf'
+        case 'open Altantur_Resume.pdf':
+          window.location.href = '/Altantur_Resume.pdf'
           break
         default:
           this.tabs[this.active].commands = [...tab.commands, { input: tab.val, output: 'zsh: command not found: ' + tab.val, time: [now.getHours(), now.getMinutes(), now.getSeconds()].join(':') }]
